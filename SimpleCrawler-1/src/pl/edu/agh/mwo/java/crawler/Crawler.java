@@ -7,10 +7,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 public class Crawler {
-
+	
+	protected TextExtractor textExtractor;
 	protected String urlToProcess;
 
-	public Crawler(String initUrl) throws MalformedURLException {
+	public Crawler(String initUrl, TextExtractor textExtractor) throws MalformedURLException {
 		urlToProcess = initUrl;
 	}
 
@@ -18,10 +19,8 @@ public class Crawler {
 
 		Document doc = null;
 		doc = Jsoup.connect(urlToProcess).get();
-
-		String text = doc.body().text();
-
-		String[] sentences = text.split("\\.");
+		
+		String[] sentences = textExtractor.textExtractor(doc);
 
 		char charToFind = 'p';
 		String sentence = "Bruksela";
@@ -47,4 +46,5 @@ public class Crawler {
 		}
 
 	}
+
 }
