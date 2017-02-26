@@ -23,10 +23,25 @@ public class Crawler {
 
 		String[] sentences = text.split("\\.");
 
+		char charToFind = 'p';
+		String sentence = "Bruksela";
+
 		for (int i = 0; i < sentences.length; i++) {
-			if (sentences[i].contains("Bruksela")) {
+			int charCount = 0;
+			for (int j = 0; j < sentences[i].length(); j++) {
+
+				if (sentences[i].charAt(j) == charToFind) {
+					charCount++;
+				}
+
+			}
+			if (charCount > 5) {
 				System.out.println(sentences[i]);
 			}
+
+			// if (sentences[i].contains(sentence)) {
+			// System.out.println(sentences[i]);
+			// }
 			////////// ??
 
 		}
